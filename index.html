@@ -19,19 +19,19 @@
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-      background: linear-gradient(135deg, #020024 0%, #090979 35%, #00d4ff 100%);
+      background: radial-gradient(circle at left, #001f3f 0%, #00cdca 100%);
       color: white;
       padding: 30px 20px;
       overflow: hidden;
     }
 
-    /* כותרת ולוגו */
+    /* כותרת מועעמת */
     .header {
       display: flex;
       align-items: center;
       gap: 15px;
       margin-top: 40px;
-      opacity: 0.5; /* מועעם כמו בתמונה בזמן כתיבה */
+      opacity: 0.6;
     }
 
     .logo-text {
@@ -43,7 +43,7 @@
     /* שדה הקלט */
     .input-container {
       width: 100%;
-      max-width: 500px;
+      max-width: 550px;
       position: relative;
       display: flex;
       align-items: center;
@@ -52,35 +52,40 @@
     .chat-input {
       width: 100%;
       padding: 18px 25px;
-      padding-left: 60px;
+      padding-left: 65px;
       border-radius: 35px;
-      border: 1px solid rgba(255, 255, 255, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.4);
       background: rgba(255, 255, 255, 0.2);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
       color: white;
-      font-size: 1.2rem;
+      font-size: 1.15rem;
       outline: none;
-      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
     }
 
     .chat-input::placeholder {
-      color: rgba(255, 255, 255, 0.8);
+      color: rgba(255, 255, 255, 0.85);
     }
 
     .send-btn {
       position: absolute;
       left: 8px;
-      width: 45px;
-      height: 45px;
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
-      background-color: #00bcd4;
+      background-color: #00cdca;
       border: none;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s;
+    }
+
+    .send-btn:hover {
+      transform: scale(1.05);
     }
 
     /* אייקונים בתחתית */
@@ -88,7 +93,6 @@
       display: flex;
       gap: 20px;
       margin-bottom: 10px;
-      opacity: 0.7;
     }
 
     .icon-box {
@@ -97,23 +101,23 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
+      cursor: pointer;
     }
 
-    .circle-1 { background: #090979; border-radius: 50%; }
-    .square-2 { background: #00bcd4; border-radius: 15px; }
+    .circle-1 { background: #001f3f; border-radius: 50%; }
+    .square-2 { background: #00cdca; border-radius: 15px; }
     .circle-3 { background: #444444; border-radius: 50%; }
   </style>
 </head>
 <body>
 
-  <!-- כותרת מועעמת מעל שדה הכתיבה -->
+  <!-- כותרת בלוגו ספירלות -->
   <div class="header">
-    <!-- סמל 3 הקווים והספירלות מקודד ישירות בקוד -->
-    <svg width="60" height="60" viewBox="0 0 100 100" fill="none" stroke="white" stroke-width="4" stroke-linecap="round">
-      <path d="M 15 25 C 40 25, 55 15, 70 25 C 80 32, 75 42, 68 38 C 62 35, 66 28, 72 30" />
-      <path d="M 15 50 C 40 50, 55 40, 70 50 C 80 57, 75 67, 68 63 C 62 60, 66 53, 72 55" />
-      <path d="M 15 75 C 40 75, 55 65, 70 75 C 80 82, 75 92, 68 88 C 62 85, 66 78, 72 80" />
+    <svg width="60" height="60" viewBox="0 0 100 100" fill="none" stroke="white" stroke-width="4.5" stroke-linecap="round">
+      <path d="M 15 25 C 40 25, 55 15, 70 25 C 78 30, 75 42, 68 38 C 63 35, 66 28, 72 30" />
+      <path d="M 15 50 C 40 50, 55 40, 70 50 C 78 55, 75 67, 68 63 C 63 60, 66 53, 72 55" />
+      <path d="M 15 75 C 40 75, 55 65, 70 75 C 78 80, 75 92, 68 88 C 63 85, 66 78, 72 80" />
     </svg>
     <div class="logo-text">סופי</div>
   </div>
@@ -122,7 +126,6 @@
   <div class="input-container">
     <input type="text" class="chat-input" placeholder="שלום סופי, אני כותב עכשיו..." />
     <button class="send-btn">
-      <!-- חץ שליחה -->
       <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
         <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
       </svg>
@@ -132,24 +135,24 @@
   <!-- סמלים בתחתית -->
   <div class="footer-icons">
     <div class="icon-box circle-1">
-      <svg width="25" height="25" viewBox="0 0 100 100" fill="none" stroke="white" stroke-width="6">
-        <path d="M 20 30 Q 50 20 70 30 C 80 35 75 45 68 40" />
-        <path d="M 20 50 Q 50 40 70 50 C 80 55 75 65 68 60" />
-        <path d="M 20 70 Q 50 60 70 70 C 80 75 75 85 68 80" />
+      <svg width="26" height="26" viewBox="0 0 100 100" fill="none" stroke="white" stroke-width="6" stroke-linecap="round">
+        <path d="M 15 25 C 40 25, 55 15, 70 25 C 78 30, 75 42, 68 38 C 63 35, 66 28, 72 30" />
+        <path d="M 15 50 C 40 50, 55 40, 70 50 C 78 55, 75 67, 68 63 C 63 60, 66 53, 72 55" />
+        <path d="M 15 75 C 40 75, 55 65, 70 75 C 78 80, 75 92, 68 88 C 63 85, 66 78, 72 80" />
       </svg>
     </div>
     <div class="icon-box square-2">
-      <svg width="25" height="25" viewBox="0 0 100 100" fill="none" stroke="white" stroke-width="6">
-        <path d="M 20 30 Q 50 20 70 30 C 80 35 75 45 68 40" />
-        <path d="M 20 50 Q 50 40 70 50 C 80 55 75 65 68 60" />
-        <path d="M 20 70 Q 50 60 70 70 C 80 75 75 85 68 80" />
+      <svg width="26" height="26" viewBox="0 0 100 100" fill="none" stroke="white" stroke-width="6" stroke-linecap="round">
+        <path d="M 15 25 C 40 25, 55 15, 70 25 C 78 30, 75 42, 68 38 C 63 35, 66 28, 72 30" />
+        <path d="M 15 50 C 40 50, 55 40, 70 50 C 78 55, 75 67, 68 63 C 63 60, 66 53, 72 55" />
+        <path d="M 15 75 C 40 75, 55 65, 70 75 C 78 80, 75 92, 68 88 C 63 85, 66 78, 72 80" />
       </svg>
     </div>
     <div class="icon-box circle-3">
-      <svg width="25" height="25" viewBox="0 0 100 100" fill="none" stroke="white" stroke-width="6">
-        <path d="M 20 30 Q 50 20 70 30 C 80 35 75 45 68 40" />
-        <path d="M 20 50 Q 50 40 70 50 C 80 55 75 65 68 40" />
-        <path d="M 20 70 Q 50 60 70 70 C 80 75 75 85 68 80" />
+      <svg width="26" height="26" viewBox="0 0 100 100" fill="none" stroke="white" stroke-width="6" stroke-linecap="round">
+        <path d="M 15 25 C 40 25, 55 15, 70 25 C 78 30, 75 42, 68 38 C 63 35, 66 28, 72 30" />
+        <path d="M 15 50 C 40 50, 55 40, 70 50 C 78 55, 75 67, 68 63 C 63 60, 66 53, 72 55" />
+        <path d="M 15 75 C 40 75, 55 65, 70 75 C 78 80, 75 92, 68 88 C 63 85, 66 78, 72 80" />
       </svg>
     </div>
   </div>
