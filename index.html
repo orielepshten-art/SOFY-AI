@@ -25,13 +25,12 @@
       overflow: hidden;
     }
 
-    /* כותרת בלוגו */
     .header {
       display: flex;
       align-items: center;
       gap: 15px;
       margin-top: 10px;
-      opacity: 0.8;
+      opacity: 0.9;
     }
 
     .logo-text {
@@ -40,7 +39,6 @@
       color: white;
     }
 
-    /* אזור שיחה */
     .chat-box {
       width: 100%;
       max-width: 550px;
@@ -49,17 +47,18 @@
       overflow-y: auto;
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
       padding: 10px;
     }
 
     .message {
-      max-width: 80%;
-      padding: 12px 18px;
+      max-width: 85%;
+      padding: 14px 18px;
       border-radius: 20px;
-      font-size: 1rem;
-      line-height: 1.4;
+      font-size: 1.05rem;
+      line-height: 1.5;
       word-wrap: break-word;
+      white-space: pre-wrap;
     }
 
     .user-message {
@@ -71,12 +70,12 @@
 
     .bot-message {
       align-self: flex-start;
-      background: rgba(0, 205, 202, 0.3);
+      background: rgba(0, 205, 202, 0.35);
       border-bottom-right-radius: 4px;
       color: white;
+      border: 1px solid rgba(255, 255, 255, 0.15);
     }
 
-    /* שדה הקלט */
     .input-container {
       width: 100%;
       max-width: 550px;
@@ -95,7 +94,7 @@
       backdrop-filter: blur(12px);
       -webkit-backdrop-filter: blur(12px);
       color: white;
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       outline: none;
       box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
     }
@@ -119,7 +118,6 @@
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     }
 
-    /* אייקונים בתחתית */
     .footer-icons {
       display: flex;
       gap: 20px;
@@ -143,7 +141,7 @@
 <body>
 
   <div class="header">
-    <svg width="45" height="45" viewBox="0 0 100 100" fill="none" stroke="white" stroke-width="4.5" stroke-linecap="round">
+    <svg width="40" height="40" viewBox="0 0 100 100" fill="none" stroke="white" stroke-width="4.5" stroke-linecap="round">
       <path d="M 15 25 C 40 25, 55 15, 70 25 C 78 30, 75 42, 68 38 C 63 35, 66 28, 72 30" />
       <path d="M 15 50 C 40 50, 55 40, 70 50 C 78 55, 75 67, 68 63 C 63 60, 66 53, 72 55" />
       <path d="M 15 75 C 40 75, 55 65, 70 75 C 78 80, 75 92, 68 88 C 63 85, 66 78, 72 80" />
@@ -154,7 +152,7 @@
   <div class="chat-box" id="chatBox"></div>
 
   <div class="input-container">
-    <input type="text" id="userInput" class="chat-input" placeholder="שלום סופי, אני כותב עכשיו..." onkeypress="handleKeyPress(event)" />
+    <input type="text" id="userInput" class="chat-input" placeholder="דבר עם סופי..." onkeypress="handleKeyPress(event)" />
     <button class="send-btn" onclick="sendMessage()">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="white">
         <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
@@ -163,38 +161,22 @@
   </div>
 
   <div class="footer-icons">
-    <div class="icon-box circle-1">
-      <svg width="22" height="22" viewBox="0 0 100 100" fill="none" stroke="white" stroke-width="6" stroke-linecap="round">
-        <path d="M 15 25 C 40 25, 55 15, 70 25 C 78 30, 75 42, 68 38 C 63 35, 66 28, 72 30" />
-        <path d="M 15 50 C 40 50, 55 40, 70 50 C 78 55, 75 67, 68 63 C 63 60, 66 53, 72 55" />
-        <path d="M 15 75 C 40 75, 55 65, 70 75 C 78 80, 75 92, 68 88 C 63 85, 66 78, 72 80" />
-      </svg>
-    </div>
-    <div class="icon-box square-2">
-      <svg width="22" height="22" viewBox="0 0 100 100" fill="none" stroke="white" stroke-width="6" stroke-linecap="round">
-        <path d="M 15 25 C 40 25, 55 15, 70 25 C 78 30, 75 42, 68 38 C 63 35, 66 28, 72 30" />
-        <path d="M 15 50 C 40 50, 55 40, 70 50 C 78 55, 75 67, 68 63 C 63 60, 66 53, 72 55" />
-        <path d="M 15 75 C 40 75, 55 65, 70 75 C 78 80, 75 92, 68 88 C 63 85, 66 78, 72 80" />
-      </svg>
-    </div>
-    <div class="icon-box circle-3">
-      <svg width="22" height="22" viewBox="0 0 100 100" fill="none" stroke="white" stroke-width="6" stroke-linecap="round">
-        <path d="M 15 25 C 40 25, 55 15, 70 25 C 78 30, 75 42, 68 38 C 63 35, 66 28, 72 30" />
-        <path d="M 15 50 C 40 50, 55 40, 70 50 C 78 55, 75 67, 68 63 C 63 60, 66 53, 72 55" />
-        <path d="M 15 75 C 40 75, 55 65, 70 75 C 78 80, 75 92, 68 88 C 63 85, 66 78, 72 80" />
-      </svg>
-    </div>
+    <div class="icon-box circle-1"></div>
+    <div class="icon-box square-2"></div>
+    <div class="icon-box circle-3"></div>
   </div>
 
   <script>
-    function sendMessage() {
+    // כאן צריך להדביק את המפתח במקום המילים שבתוך הגרשיים
+    const API_KEY = "AQ.Ab8RN6LbEDI0ZvDaw2OrDBN9WDHx8Ij1ncRTRc1gEDHko0HVpw";
+
+    async function sendMessage() {
       const input = document.getElementById('userInput');
       const chatBox = document.getElementById('chatBox');
       const text = input.value.trim();
 
       if (text === "") return;
 
-      // הצגת הודעת המשתמש
       const userDiv = document.createElement('div');
       userDiv.className = 'message user-message';
       userDiv.textContent = text;
@@ -203,14 +185,34 @@
       input.value = '';
       chatBox.scrollTop = chatBox.scrollHeight;
 
-      // תגובה אוטומטית של סופי
-      setTimeout(() => {
-        const botDiv = document.createElement('div');
-        botDiv.className = 'message bot-message';
-        botDiv.textContent = 'שלום! קיבלתי את ההודעה שלך: "' + text + '"';
-        chatBox.appendChild(botDiv);
-        chatBox.scrollTop = chatBox.scrollHeight;
-      }, 600);
+      const loadingDiv = document.createElement('div');
+      loadingDiv.className = 'message bot-message';
+      loadingDiv.textContent = 'סופי חושבת...';
+      chatBox.appendChild(loadingDiv);
+      chatBox.scrollTop = chatBox.scrollHeight;
+
+      try {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${API_KEY}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: text }] }]
+          })
+        });
+
+        const data = await response.json();
+        
+        if (data.candidates && data.candidates[0].content) {
+          const reply = data.candidates[0].content.parts[0].text;
+          loadingDiv.textContent = reply;
+        } else {
+          loadingDiv.textContent = 'סליחה, לא הצלחתי לקבל מענה כרגע.';
+        }
+      } catch (error) {
+        loadingDiv.textContent = 'שגיאה בהתחברות לשרת של סופי.';
+      }
+
+      chatBox.scrollTop = chatBox.scrollHeight;
     }
 
     function handleKeyPress(event) {
